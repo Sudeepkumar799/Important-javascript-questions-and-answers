@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      html,
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      pre {
+        color: #ffffff;
+        background-color: #000000;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2>JavaScript Important Questions and Answers:</h2>
+
+      <h3>0. What is JavaScript?</h3>
+      <p>Ans:</p>
+      JavaScript is a programming language which is used to make website interactive. JavaScript is a synchronous single-threaded language. Synchronous Single-Threaded - It means, it can ony execute
+      one command a a time and in a specific order. Note: Everything in javascript happens in execution context.
+
+      <h3>1. What is execution context in JavaScript?</h3>
+      <p>Ans:</p>
+      Execution context is a environment wwhere all the javascrip code is executed and evaluated. When JavaScript code is run, it creates an execution context for that code to execute. Each time a
+      function is called, a new execution context is created for that function. The execution context keeps track of the variables and functions defined within that function and provides a space for
+      them to exist and be used. Call Stack is a mechanism which will maintain the order of execution of execution context. Other Names of the Call Stack: Execution Context Stack, Program Stack,
+      Control Stack, Runtime Stack, Machine Stack.
+
+      <h3>3. Whats is Asynchronius JavaScript?</h3>
+      <p>Ans:</p>
+
+      Asynchronous programming is a technique that enables javascript to run long-running tasks and continue running other tasks parallelly. Example: setTimeout, SetInterval, Async/Await, Promise,
+      etc.
+
+      <h3>4. What is Event Loop in JavaScript?</h3>
+      <p>Ans:</p>
+
+      Event loop is a mechanism which constantly checks for Microtask Queue and Callback Queue. If there are any pending executions those will be pushed to Call Stack. The Call Stack should be empty
+      before the callback, microtask events to be pushed. Event loop will gives illusion of being multithreaded even though it is single-threaded.
+
+      <h3>5. What is Callback Queue Starvation?</h3>
+      <p>Ans:</p>
+      Callback queue starvation is the situation when log-running function is executed and other functions that are waiting in the queue are blocked from execution. Causes callback queue starvation:
+      Long-running functions, Synchronous code, Large number of calls. Ways to solve callback queue starvation: Break up long-running functions, use asynchronous code, use web workers, use setTimeout.
+
+      <h3>6. What is Browser/Web API and what are included?</h3>
+      <p>Ans:</p>
+      Browser/Web API's come buil-in with the browsers. API's List: setTimeout, setInterval, Web Storage API(LocalStorage and SessionStorage), Web Socket API, Service Worker API, Fetch API, Clipboard
+      API, Geolocation API, Resize Observer API, Page Visibility API, URL API, Vibration API, FullScreen API, Lazyload API, Console API, DOM API.
+
+      <h3>7. What is Hoisting?</h3>
+      <p>Ans:</p>
+      Hoisting is a default behaviour of moving all the variable and function declarations at the top of the scope before code execution.
+
+      <h3>8. What is closure?</h3>
+      <p>Ans:</p>
+      Closure is an inner function which has access to the outer function variables and parameters.
+
+      <p>Example:</p>
+      <pre>
+        <code>			  
+          function outerFunction() {
+            const outerVar = "I am from the outer function";
+            
+            function innerFunction() {
+              console.log(outerVar); // innerFunction can still access outerVar
+            }
+            
+            return innerFunction;
+            }
+            
+            const closure = outerFunction(); // closure now holds a reference to innerFunction
+            closure(); // This call still has access to outerVar
+        </code>
+      </pre>
+
+      <h3>9. What is Callback and Callback Hell?</h3>
+      <p>Ans:</p>
+
+      <p>Callback is a function which is passed as a arguments to another function. It gets executed when that other function is finishes its job, typically a async operations.</p>
+      <p>Example:</p>
+      <pre>
+        <code>
+          function doSomethingAsync(callback) {
+            setTimeout(function () {
+              console.log("Task done!");
+              callback();
+            }, 1000);
+          }
+          
+          function myCallback() {
+            console.log("Callback executed!");
+          }
+          
+          doSomethingAsync(myCallback);
+        </code>
+      </pre>
+
+      <p><b>Callback Hell:</b> Callback hell is a situation when you have many nested callbacks, making your code look like pyramind of functions.</p>
+      <p>Example:</p>
+      <pre>
+        <code>
+          asyncOperation1(function () {
+            asyncOperation2(function () {
+              asyncOperation3(function () {
+                // More nested callbacks...
+              });
+            });
+          });          
+        </code>
+      </pre>
+      <p>
+        <b><u>Note: </u></b>To avoid callback hell you can consider using Promises for more structured code. You can also consider using async/await for even clear code.
+      </p>
+
+      <h3>10. What is Function Declaration and Function Expression?</h3>
+      <p>Ans: In JavaScript function can be defined in two ways. As a function declaration and function expression.</p>
+
+      <div style="margin-left: 20px">
+        <p><b>I. Function Declaration:</b> A function declaration defines a named function that can be called before it's declared in the code.</p>
+
+        <p>Example:</p>
+        <pre>
+          <code>
+            function add(a, b) {
+              return a + b;
+            }          
+          </code>
+        </pre>
+
+        <p><b>II. Function Expression:</b> When a function defination is assigned to a variable is called function expression.</p>
+
+        <div style="margin-left: 40px">
+          <p><b>A. Anonymous Function Expression:</b> An anonymous function expression has no name and is typically assigned to a variable.</p>
+          <p>Example:</p>
+          <pre>
+            <code>
+              const add = function(a, b) {
+                return a + b;
+              };              
+            </code>
+          </pre>
+
+          <p><b>B. Named Function Expression:</b> A named function expression is assigned to a variable and has a name. The name is only accessible inside the function.</p>
+          <p>Example:</p>
+          <pre>
+            <code>
+              var newSeries = function fibonacci(num) {
+                if (num <= 1) return 1;
+              
+                return fibonacci(num - 1) + fibonacci(num - 2);
+              }           
+            </code>
+          </pre>
+        </div>
+      </div>
+
+      <h3>11. Whats is Prototype and Prototypal Inheritance?</h3>
+      <p>Ans: JavaScript objects have a special property called prototype that is either null or references to another object.</p>
+      <p>When we try to read a property from a object and it's missing, JavaScript will automatically takes it from the prototype. This is called Prototypal Inheritance.</p>
+
+      <p>Example: Setting prototype</p>
+      <pre>
+        <code>
+          const user = {
+            id: "1456",
+            name: "Sudeep"
+          };
+
+          user.__proto__  = {
+            run: function() {
+              console.log(this);
+            } 
+          }
+        </code>
+      </pre>
+
+      <h3>12: Difference between var, let and const?</h3>
+      <p>Ans:</p>
+
+      <p>var, let, and const are used to declare variables, but they have different characteristics and usage.</p>
+      <p><b>Key differences between them:</b></p>
+      <div style="margin-left: 20px">
+        <p><b>I. Scope:</b></p>
+        <p>
+          Variables declared with var are function-scoped, meaning they are visible throughout the function in which they are declared. If declared outside of a function, they are considered globally
+          scoped.
+        </p>
+        <p>
+          Variables declared with let and const are block-scoped, meaning they are only visible within the block (enclosed by {}) in which they are declared. This includes loops, conditionals, and
+          functions.
+        </p>
+        <p><b>II. Hoisting:</b></p>
+        <p>
+          Variables declared with var are hoisted to the top of their containing function or global context, which means they are available for use throughout the entire function or context. However,
+          their initial value is undefined until they are assigned a value.
+        </p>
+        <p>
+          Variables declared with let and const are also hoisted but are not initialized until the code execution reaches their declaration. This means that they are in a "temporal dead zone" until
+          they are explicitly initialized. Attempting to access them before initialization results in a ReferenceError.
+        </p>
+
+        <p><b>III. Reassignment:</b></p>
+        <p>Variables declared with var can be redeclared and reassigned.</p>
+        <p>Variables declared with let can be reassigned, but they cannot be redeclared in the same block.</p>
+        <p>
+          Variables declared with const cannot be reassigned or redeclared in the same block. However, if a const variable holds an object or array, the properties or elements of that object or array
+          can be modified.
+        </p>
+        <p><b>IV. Global Object Property:</b></p>
+        <p>Variables declared with var at the global level become properties of the global object (in a browser environment, this is usually window).</p>
+        <p>Variables declared with let and const at the global level do not become properties of the global object. This can help prevent accidental global namespace pollution.</p>
+      </div>
+
+      <h3>13: What is shallow and deep clone?</h3>
+      <p>Ans:</p>
+      <p>Shallow cloning and deep cloning are two different techniques used to create copies of objects in JavaScript</p>
+
+      <div style="margin-left: 20px">
+        <p>
+          <b>Shallow Clone:</b> Copies the top-level object, but nested objects are still shared with the original. This can be can be achieved using methods like Object.assign, the spread operator
+          (...), or libraries like Lodash's _.clone.
+        </p>
+        <p>Example:</p>
+        <pre>
+          <code>
+            const original = { a: 1, b: [2, 3] };
+            const shallowClone = { ...original };
+            shallowClone.b.push(4);
+
+            console.log(original.b);         // [2, 3, 4] (original is affected)
+            console.log(shallowClone.b);     // [2, 3, 4] (shallowClone is also affected)
+          </code>
+        </pre>
+
+        <p>
+          <b>Deep Clone:</b> Creates a completely independent copy, including all nested objects, ensuring no shared references. This can be achieved using JSON.parse(JSON.stringify(obj)) or Lodash's
+          _.cloneDeep or custom recursive functions.
+        </p>
+        <p>Example:</p>
+        <pre>
+          <code>
+            const original = { a: 1, b: [2, 3] };
+            const deepClone = JSON.parse(JSON.stringify(original));
+            deepClone.b.push(4);
+            
+            console.log(original.b);         // [2, 3] (original is not affected)
+            console.log(deepClone.b);        // [2, 3, 4] (deepClone is modified independently)            
+          </code>
+        </pre>
+      </div>
+
+      <h3>14. What is Promise?</h3>
+      <p>
+        Ans: Promise is buil-in javascript object which is used to handle asynchronous operations. It will have Pending, Fulfilled(resolved) and Rejected states. Promises allow us to attach 3
+        handlers. Tose are then(), catch() and finally().
+      </p>
+      <p>Example:</p>
+
+      <pre>
+        <code>
+          const promise = new Promise((resolve, reject) => {
+            // Simulate a task taking time
+            setTimeout(() => {
+                const success = true;
+                if (success) {
+                    resolve("Task is done!");
+                } else {
+                    reject("Task failed!");
+                }
+            }, 2000);
+        });
+        
+        promise
+            .then(result => {
+                console.log("Success:", result);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });        
+        </code>
+      </pre>
+
+      <h3>15. What is async, await?</h3>
+      <p>
+        Ans: async and await are JavaScript keywords and language features introduced in ECMAScript 2017 (ES8). Using this we can simply the asynchronous code and make it more readable. They are often
+        used with Promises.
+      </p>
+
+      <pre>
+        <code>
+          async function fetchData() {
+            try {
+                const response = await fetch('https://api.example.com/data');
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+        }
+        
+        fetchData()
+            .then(data => {
+                console.log('Data fetched:', data);
+            })
+            .catch(error => {
+                console.error('Error in fetchData:', error);
+            });        
+        </code>
+      </pre>
+
+      <h3>16. ES6 Features?</h3>
+      <p>Ans: Key ES6 features:</p>
+      <div style="margin-left: 20px">
+        1. let and const: New ways to declare variables with `let` and `const` for better scoping.<br />
+
+        2. Arrow Functions: Shorter and more convenient function syntax with `=>`.<br />
+
+        3. Template Literals: Easier string creation with backticks for embedded expressions and multiline strings.<br />
+
+        4. Destructuring: A concise way to extract values from arrays and objects.<br />
+
+        5. Spread and Rest Operators: `...` for splitting and collecting elements in arrays and function arguments.<br />
+
+        6. Classes: A class-based syntax for object-oriented programming.<br />
+
+        7. Modules: A system for organizing code into separate files using `import` and `export`.<br />
+
+        8. Promises: A better way to handle asynchronous operations, making code more readable.<br />
+      </div>
+
+      <h3>17. What is Document Object Model(DOM) and DOM manipulation?</h3>
+      <p>
+        Ans: DOM is a programming interface for web documents. It represents the structure of a web page and allows programs to interact with and manipulate the page's content, structure, and style.
+      </p>
+
+      <h3>18. What is 'this' keyword?</h3>
+      <p>Ans: The this keyword in JavaScript refers to the current object, which is determined by how a function is called or the context in which it's used.</p>
+
+      <div style="margin-left: 20px">
+        <p>1. Global Content: In the global context (outside of any function), this refers to the global object. In a browser environment, this is often the window object.</p>
+        <p>
+          2. Function Context: Inside a function, the value of this depends on how the function is called. <br />If the function is a regular function (not part of an object), this typically refers to
+          the global object. <br />If the function is a method of an object, this refers to the object the method is called on.
+        </p>
+        <p>3. Constructor Context: When a function is used as a constructor with the new keyword, this refers to the newly created object.</p>
+        <p>4. Event Handlers: In event handlers (e.g., when handling a click event), this often refers to the DOM element that triggered the event.</p>
+        <p>5. Arrow Functions: Arrow functions do not have their own this. They inherit the this value from their enclosing context.</p>
+      </div>
+      <p>Example:</p>
+      <pre>
+          <code>
+            // Global context
+            console.log(this === window); // In a browser, true
+
+            const obj = {
+                name: 'My Object',
+                sayHello: function() {
+                    console.log(`Hello from ${this.name}`);
+                }
+            };
+
+            obj.sayHello(); // "Hello from My Object"
+
+            function Person(name) {
+                this.name = name;
+            }
+
+            const person = new Person('Alice');
+            console.log(person.name); // "Alice"
+
+            document.querySelector('button').addEventListener('click', function() {
+                console.log(this); // DOM element that triggered the click
+            });
+
+            const arrowFunction = () => {
+                console.log(this); // Inherits from the surrounding context
+            };
+
+            arrowFunction(); // Depends on where it's called
+          </code>
+        </pre>
+
+      <h3>19. What is higher order functions?</h3>
+      <p>Ans: A higher order function is a function that takes one or more functions as arguments, or returns a function as its result.</p>
+
+      <p>Example:</p>
+      <pre>
+        <code>
+          const calculate = (func, value) => {
+            return value + func(value);
+          };
+  
+          const multiply = (val) => {
+            return val * val;
+          };
+  
+          const doCalculate = calculate(multiply, 4);
+  
+          console.log(doCalculate);
+        </code>
+      </pre>
+
+      <h3>20. ABC(Apply, Bind, Call)?</h3>
+      <p>Ans: The apply(), bind(), and call() methods in JavaScript are all used to set the this keyword for a function, but they differ in how they pass arguments.</p>
+
+      <div style="margin-left: 20px">
+        <p>1. apply(): The apply() method takes an array of arguments as its second parameter, and then calls the function with those arguments.</p>
+        <p>2. bind(): The bind() method creates a new function that is bound to a specific this value. The new function can then be called with any number of arguments.</p>
+        <p>3. call(): The call() method calls a function with a specific this value and a specific set of arguments.</p>
+      </div>
+
+      <p>Example:</p>
+      <pre>
+        <code>
+          const person = {
+            name: "John Doe",
+            age: 30,
+          };
+          
+          function greet(p1, p2, p3) {
+            console.log(`Hello, ${this.name}! Parameters: ${p1}, ${p2}, ${p3}`);
+          }
+          
+          // `apply()`
+          greet.apply(person, [1, 2, 3]); // Hello, John Doe! Parameters: 1, 2, 3
+          
+          // `bind()`
+          const boundGreet = greet.bind(person);
+          boundGreet("a", "b", "c"); // Hello, John Doe! Parameters: a, b, c
+          
+          // `call()`
+          greet.call(person, "x", "y", "z"); // Hello, John Doe! Parameters: x, y, z
+        </code>
+      </pre>
+
+      <h3>21. What is Anonymous Function?</h3>
+      <p>Ans: An anonymous function in JavaScript is a function that does not have a name. It is often created inline and passed as an argument to another function.</p>
+      <p>Example:</p>
+      <pre>
+        <code>
+          var myFunction = function (arg1, arg2) {
+            // do something with arg1 and arg2
+          };
+        </code>
+      </pre>
+
+      <h3>22. What is Named Function Expression?</h3>
+      <p>Example:</p>
+      <pre>
+        <code>
+          var sum = function add(a, b) { 
+            return a + b; 
+          }
+        </code>
+      </pre>
+
+      <h3>23. Difference between arguments and parameters?</h3>
+      <p>Example:</p>
+      <pre>
+        <code>
+          var sum = function(a, b) { 
+            // Here a, b are parameters 
+            return a + b; 
+          } 
+            
+           sum(1, 2); // Here 1, 2 are arguments
+        </code>
+      </pre>
+
+      <h3>24. What is First Class Functions/First Class Citizens?</h3>
+      <p>Ans: In the JavaScript functions are used as variables, which means they can be assigned to variables, pass as a arguments and returned from other functions.</p>
+
+      <h3>25. What is IIFE(Immediatly Invoked Function Exression)?</h3>
+      <p>Ans: IIFE is a function that runs as soon as it defined. IIFE's prevent pollution of the global JS scope.</p>
+      <p>Example:</p>
+      <pre>
+        <code>
+          // IIFE Function
+          (function() {
+            console.log("Hello World!");
+          })();
+        </code>
+      </pre>
+
+      <h3>26. What is Event Bubbling?</h3>
+      <p>Ans: Event bubbling is a concept in javascript and DOM where, when child element event triggers, the event will bubble up through their ancestors.</p>
+      <p>Note: To stop event bubbling you can use event.stopPropogation().</p>
+
+      <h3>27. What is Event Capturing?</h3>
+      <p>
+        Ans: Event capturing is the opposite of event bubbling in the DOM. It processes events from the top of the DOM hierarchy down to the target element. To use it, you set the third parameter of
+        the addEventListener method to true. It's less commonly used than event bubbling.
+      </p>
+
+      <h3>28. What is currying?</h3>
+      <p>Ans: Currying is a technique that converts a function with multiple arguments into series of functions, each taking one argument.</p>
+      <p>Example:</p>
+      <pre>
+        <code>
+          function add(x) {
+            return function(y) {
+                return x + y;
+            };
+        }
+        
+        const addFive = add(5); // Partial application, returns a function
+        console.log(addFive(3)); // Outputs: 8
+        
+        const addTen = add(10);
+        console.log(addTen(3)); // Outputs: 13        
+        </code>
+      </pre>
+
+      <h3>29. What is scope in javascrip?</h3>
+      <p>Ans:</p>
+
+      <h3>30. What is Temporal Dead Zone(TDZ)?</h3>
+      <p>Ans: A temporal dead zone (TDZ) is the block where a variable is inaccessible until the moment the computer initializes it with a value.</p>
+
+      <h3>31. OOP in JavaScript</h3>
+      <p>Ans: Object-Oriented Programming (OOP) in JavaScript is a programming paradigm that allows you to structure your code around objects and classes.</p>
+      <p>Types of OOP concets:</p>
+      <div style="margin-left: 20px">
+        <p>
+          <b>1. Inheritance:</b> Inheritance in JavaScript is a mechanism that allows new classes to be created from existing classes. It provides the child class with the ability to reuse the methods
+          and variables of the parent class.
+        </p>
+        <p>Note: The extends keyword is used to create a child class from a parent class.</p>
+
+        <p>Example:</p>
+        <pre>
+          <code>
+            class Animal {
+              constructor(name) {
+                this.name = name;
+              }
+            
+              speak() {
+                console.log("I am an animal!");
+              }
+            }
+            
+            class Dog extends Animal {
+              constructor(name, breed) {
+                super(name);
+                this.breed = breed;
+              }
+            
+              bark() {
+                console.log("Woof!");
+              }
+            }
+            
+            const dog = new Dog("Fido", "Golden Retriever");
+            
+            console.log(dog.name); // "Fido"
+            console.log(dog.breed); // "Golden Retriever"
+            dog.speak(); // "I am an animal!"
+            dog.bark(); // "Woof!"
+          </code>
+        </pre>
+        <p>
+          <b>2. Encapsulation: </b> Encapsulation is a fundamental concept in object-oriented programming that refers to the practice of hiding the internal details of an object and exposing only the
+          necessary information to the outside world.
+        </p>
+        <p>Example:</p>
+        <pre>
+          <code>
+            class Something {
+              #property;
+            
+              constructor(){
+                this.#property = "test";
+              }
+            
+              #privateMethod() {
+                return 'hello world';
+              }
+            
+              getPrivateMessage() {
+                  return this.#property;
+              }
+            }
+            
+            const instance = new Something();
+            console.log(instance.property); //=> undefined
+            console.log(instance.privateMethod); //=> undefined
+            console.log(instance.getPrivateMessage()); //=> test
+            console.log(instance.#property); //=> Syntax error
+          </code>
+        </pre>
+        <p>
+          <b>3. Abstraction: </b> Abstraction in JavaScript is a programming technique that allows you to hide the implementation details of an object and expose only the essential features to the
+          user.
+        </p>
+        <p>Abstract classes are a type of class that cannot be instantiated directly. They are used to provide a common blueprint for other classes to inherit from.</p>
+        <p>Example:</p>
+        <pre>
+          <code>
+            class Person {
+              constructor(name, age, country) {
+                if (this.constructor === Person) {
+                  throw new Error('Cannot instantiate an abstract class.');
+                }
+                this.name = name;
+                this.age = age;
+                this.country = country;
+              }
+            }
+            
+            class Employee extends Person {
+              constructor(name, age, country, salary) {
+                super(name, age, country);
+                this.salary = salary;
+              }
+            
+              getEmployeeDetails() {
+                console.log(this);
+              }
+            }
+            
+            // const p1 = new Person('Sudeep', 30, 'India'); // Throws error because we can't define abtract class.
+            // p1.getEmployeeDetails();
+            
+            // const e1 = new Employee('Sudeep', 30, 'India', 20000);  // Extending Person will work
+            // e1.getEmployeeDetails();
+          </code>
+        </pre>
+        <p><b>4. Polymorphism</b> Polymorphism means the same function with different signatures is called many times.</p>
+        <p>Note: Method overloading, method overriding.</p>
+        <p>Example:</p>
+        <pre>
+          <code>
+            class firstClass {
+              add() {
+                console.log("First Method")
+              }
+            }
+            class secondClass extends firstClass {
+              add() {
+                console.log(30 + 40);
+              }
+            }
+            class thirdClass extends secondClass {
+              add() {
+                console.log("Last Method")
+              }
+            }
+            let ob = new firstClass();
+            let ob2 = new secondClass();
+            let ob3 = new thirdClass();
+            ob.add();
+            ob2.add();
+            ob3.add();            
+          </code>
+        </pre>
+      </div>
+    </main>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  </body>
+</html>
